@@ -25,7 +25,7 @@ public class GreetingController {
     }
 
 
-    @RequestMapping(value = "/put", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     public Greeting create(@RequestBody Greeting greeting) {
 
         return greetingRepository.save(greeting);

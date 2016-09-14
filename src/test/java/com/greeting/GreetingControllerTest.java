@@ -1,12 +1,13 @@
 package com.greeting;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.bind.annotation.RestController;
 
 import static org.junit.Assert.*;
 
@@ -15,9 +16,10 @@ import static org.junit.Assert.*;
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
+@SpringApplicationConfiguration(classes = SpringTutorialRestApplication.class)
 public class GreetingControllerTest {
     @Autowired
-    private GreetingRepository greetingRepository;
+    private GreetingService greetingService;
 
     @Test
     public void get() throws Exception {
@@ -26,8 +28,8 @@ public class GreetingControllerTest {
 
     @Test
     public void create() throws Exception {
-        Greeting greetingToAdd = greetingRepository.save(new Greeting(1, "Test"));
-        Greeting addedGreeting = greetingRepository.findOne(1L);
+        Greeting greetingToAdd = greetingService.saveGreeting(new Greeting(1, "Test"));
+        Greeting addedGreeting = greetingService.getGreeting(1L);
 
         assertEquals(greetingToAdd, addedGreeting);
     }

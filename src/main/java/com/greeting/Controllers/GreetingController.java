@@ -1,12 +1,12 @@
-package com.greeting;
+package com.greeting.Controllers;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import com.greeting.Entities.Greeting;
+import com.greeting.Repositories.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.core.MediaType;
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @RequestMapping("/greeting")

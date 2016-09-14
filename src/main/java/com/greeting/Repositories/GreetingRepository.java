@@ -1,6 +1,6 @@
-package com.greeting;
+package com.greeting.Repositories;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.greeting.Entities.Greeting;
 import org.springframework.data.repository.CrudRepository;
 
 public interface GreetingRepository extends CrudRepository<Greeting, Long> {

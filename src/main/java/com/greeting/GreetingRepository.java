@@ -1,7 +1,7 @@
-package com.greeting.Repositories;
+package com.greeting;
 
-import com.greeting.Entities.Greeting;
 import org.springframework.data.repository.CrudRepository;
+
 
 public interface GreetingRepository extends CrudRepository<Greeting, Long> {
 }

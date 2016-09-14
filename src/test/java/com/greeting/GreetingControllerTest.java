@@ -7,17 +7,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
 import javax.ws.rs.core.MediaType;
-
-import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -27,19 +26,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by internship on 14.09.2016.
  */
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest(classes = SpringTutorialRestApplication.class)
 public class GreetingControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    protected Gson gson;
-
+    public MockMvc mockMvc;
     @Autowired
     private WebApplicationContext web;
 
-    @MockBean
-    private GreetingService greetingService;
+    protected Gson gson;
 
     @Before
     public void setUp() {
@@ -52,6 +46,9 @@ public class GreetingControllerTest {
                 .build();
     }
 
+    @MockBean
+    private GreetingService greetingService;
+
     @Test
     public void create() throws Exception {
         given(this.greetingService.getGreeting(1))
@@ -59,6 +56,7 @@ public class GreetingControllerTest {
 
         Greeting greeting = new Greeting("Description");
 
+        Gson gson = new Gson();
         this.mockMvc.perform(post("/greetings")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(greeting))

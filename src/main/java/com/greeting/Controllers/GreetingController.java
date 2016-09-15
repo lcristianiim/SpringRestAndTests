@@ -1,5 +1,7 @@
-package com.greeting;
+package com.greeting.Controllers;
 
+import com.greeting.Entities.Greeting;
+import com.greeting.Services.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

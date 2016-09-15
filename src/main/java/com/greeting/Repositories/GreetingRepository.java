@@ -1,5 +1,6 @@
-package com.greeting;
+package com.greeting.Repositories;
 
+import com.greeting.Entities.Greeting;
 import org.springframework.data.repository.CrudRepository;
 
 

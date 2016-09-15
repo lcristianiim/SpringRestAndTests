@@ -1,5 +1,7 @@
-package com.greeting;
+package com.greeting.Services;
 
+import com.greeting.Entities.Greeting;
+import com.greeting.Repositories.GreetingRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;

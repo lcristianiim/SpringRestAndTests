@@ -1,5 +1,9 @@
-package com.greeting;
+package com.greeting.Services;
 
+import com.greeting.Entities.Greeting;
+import com.greeting.Repositories.GreetingRepository;
+import com.greeting.Services.GreetingService;
+import com.greeting.SpringTutorialRestApplication;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
